@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 24px;
+    }
+
+    .unresolved {
+       display: none;
+    }
+
+    .special {
+      display: block;
+    }
+
+  </style>
+  <script type="module" src="src/simple-input.js"></script>
+  <script>
+    window.onload = () => document.body.classList.remove('unresolved');
+  </script>
+</head>
+<body class="unresolved">
+
+<simple-input error="Enter a valid email address">
+  <input slot="input" required type="email" id="emailInput">
+  <label slot="label" for="emailInput">Email address</label>
+</simple-input>
+</body>
+</html>
