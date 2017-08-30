@@ -1,0 +1,10 @@
+{
+  "name": "simple-input",
+  "version": "0.0.1",
+  "description": "",
+  "author": "",
+  "license": "BSD-3-Clause",
+  "dependencies": {
+    "@polymer/polymer": "3.0.3-pre.3"
+  }
+}
