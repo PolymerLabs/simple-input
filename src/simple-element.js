@@ -16,7 +16,7 @@ export class SimpleElement extends PropertyAccessors(HTMLElement) {
    * Creates a template element from the class template string.
    * Does this work for the class one time only.
    */
-  static finalize() {
+  static finalize(name) {
     const proto = this.prototype;
     if (!proto.hasOwnProperty('__finalized')) {
       proto.__finalized = true;
@@ -24,6 +24,9 @@ export class SimpleElement extends PropertyAccessors(HTMLElement) {
       if (template) {
         proto._template = document.createElement('template');
         proto._template.innerHTML = template;
+        if (window.ShadyCSS) {
+          window.ShadyCSS.prepareTemplate(proto._template, name);
+        }
       }
     }
   }
@@ -52,7 +55,7 @@ export class SimpleElement extends PropertyAccessors(HTMLElement) {
    * 4. appends the stamped template to the shadowRoot.
    */
   ready() {
-    this.constructor.finalize();
+    this.constructor.finalize(this.localName);
     if (this._template) {
       if (!this.shadowRoot) {
         this.attachShadow({mode: 'open'});
