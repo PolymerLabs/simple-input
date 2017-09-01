@@ -15,7 +15,7 @@ const source = require('vinyl-source-stream');
 const babel = require('rollup-plugin-babel');
 const size = require('gulp-size');
 
-gulp.task('simple-input', () => {
+gulp.task('default', () => {
 
   let sourcePath = '../src/';
   let sourceFile = 'simple-input.js';
@@ -23,8 +23,7 @@ gulp.task('simple-input', () => {
     entry: `${sourcePath}${sourceFile}`,
     format: 'iife',
     moduleName: 'webcomponentsjs',
-    plugins: [babel({presets: require.resolve('babel-preset-babili')})],
-    //treeshake: false
+    plugins: [babel({presets: require.resolve('babel-preset-babili')})]
   };
 
   return rollup(options)

@@ -8,6 +8,7 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 */
 import {SimpleElement} from './simple-element.js';
+import {findAssignedNode} from './utils.js';
 import {afterNextRender} from '../node_modules/@polymer/polymer/lib/utils/render-status.js'
 
 export class SimpleInput extends SimpleElement {
@@ -137,7 +138,7 @@ export class SimpleInput extends SimpleElement {
   }
 
   _findInput() {
-    return this.$.inputSlot.assignedNodes().find(n => n.localName == 'input');
+    return findAssignedNode(this.$.inputSlot, 'input');
   }
 
   _propertiesChanged(props, changed, oldProps) {
