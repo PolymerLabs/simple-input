@@ -19,6 +19,7 @@ export class SimpleElement extends PropertyAccessors(HTMLElement) {
   static finalize(name) {
     const proto = this.prototype;
     if (!proto.hasOwnProperty('__finalized')) {
+      this.createPropertiesForAttributes();
       proto.__finalized = true;
       const template = this.template;
       if (template) {
@@ -28,6 +29,7 @@ export class SimpleElement extends PropertyAccessors(HTMLElement) {
           window.ShadyCSS.prepareTemplate(proto._template, name);
         }
       }
+      return true;
     }
   }
 

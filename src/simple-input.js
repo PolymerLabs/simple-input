@@ -113,6 +113,17 @@ export class SimpleInput extends SimpleElement {
     return ['error'];
   }
 
+  static finalize(name) {
+    if (super.finalize(name)) {
+      // private properties used to react to input changes
+      this.createProperties([
+        '_focused',
+        '_invalid',
+        '_hasValue'
+      ]);
+    }
+  }
+
   ready() {
     super.ready();
     // Do all setup work after the first render.
@@ -157,14 +168,5 @@ export class SimpleInput extends SimpleElement {
   }
 
 }
-
-SimpleInput.createPropertiesForAttributes();
-
-// private properties used to react to input changes
-SimpleInput.createProperties([
-  '_focused',
-  '_invalid',
-  '_hasValue'
-]);
 
 customElements.define('simple-input', SimpleInput);
